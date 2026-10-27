@@ -2,14 +2,14 @@
 using namespace std;
 
 int flag[2]={0,0};
-int turn=-1;
+int turn=1;
 
 void foo(int i){
     flag[i]=1;
     while(flag[1-i]){
         if(turn == (1-i)){
             flag[i]=0;
-            while(flag[1-i]){
+            while(turn != (1-i)){
                 // wait
             }
             flag[i]=1;
