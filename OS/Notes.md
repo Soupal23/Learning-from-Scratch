@@ -4,27 +4,22 @@ Peterson's algorithm: The process stays interested and uses turn to give priorit
 
 Dekker's algorithm: The process may lower its own flag, wait, and then raise it again. 
 
-        Raise Interest
-              |
-              v
-   Does other process want CS?
-          /        \
-        No          Yes
-        |            |
-        v            v
-   Execute CS     Check Turn
-                    /    \
-              My turn    Other's turn
-                 |          |
-                 v          v
-             Execute CS   Withdraw Interest
-                              |
-                              v
-                            Wait
-                              |
-                              v
-                         Raise Interest
-                              |
-                              └───────────> Check again
-                              
+```mermaid
+flowchart TD
+    A["Raise Interest<br/>flag[i] = true"] --> B{"Does the other<br/>process want CS?"}
+
+    B -->|No| C["Execute Critical Section"]
+    B -->|Yes| D{"Whose turn is it?"}
+
+    D -->|My turn| C
+    D -->|Other's turn| E["Withdraw Interest<br/>flag[i] = false"]
+
+    E --> F["Wait<br/>while turn == other"]
+    F --> G["Retry<br/>flag[i] = true"]
+
+    G --> B
+
+    C --> H["Exit CS<br/>turn = other<br/>flag[i] = false"]
+```
+
 Peterson's algorithm is more compact and symmetric. Dekker's algorithm handles conflict through multiple steps: withdraw, wait, and retry.
