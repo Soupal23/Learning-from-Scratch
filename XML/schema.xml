@@ -1,0 +1,9 @@
+<? xml version = "1.0" ?>
+<xs:schema xmls:xs = "http://www.w3.org/2001/XMLSchema">
+<xs:element name="rpcRequest">
+<xs:cmplexType><xs:sequence>
+<xs:element name="methodName" tupe="xs:string"/>
+<xs:element name="num1" type="xs:integer">
+<xs:element name="num2" type="xs:integer">
+</xs:sequence></xs:cmplexType>
+</xs:element>

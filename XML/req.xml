@@ -1,0 +1,6 @@
+<? xml version = "1.0" ?>
+<rpcRequest>
+<methodNmae> addNumbers</methodNumbers>
+<num1>10</num1>
+<num2>20</num2>
+</rpcRequest>

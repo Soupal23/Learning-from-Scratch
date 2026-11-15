@@ -1,0 +1,5 @@
+<? sml version = "1.0" ?>
+<rpcResponce>
+<status>Success</status>
+<result>30</result>
+</rpcResponce>
